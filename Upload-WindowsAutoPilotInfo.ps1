@@ -16,7 +16,7 @@ https://storage-acct-name.blob.core.windows.net/container-name.
     Version:         0.1
     Author:          Zachary Choate
     Creation Date:   02/24/2020
-    URL:             
+    URL:             https://raw.githubusercontent.com/zchoate/Upload-WindowsAutoPilotInfo/master/Upload-WindowsAutoPilotInfo.ps1
 #>
 param(
 [string] $url,
