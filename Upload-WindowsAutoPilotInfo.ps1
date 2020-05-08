@@ -19,7 +19,8 @@ converted to a PS function.
     Last Updated:    05/07/2020
     Creation Date:   02/24/2020
     Author:          Zachary Choate
-    URL:             https://raw.githubusercontent.com/zchoate/Upload-WindowsAutoPilotInfo/master/Upload-WindowsAutoPilotInfo.ps1
+    Organization:    KSM Consulting
+    URL:             https://raw.githubusercontent.com/KSMC-TS/Upload-WindowsAutoPilotInfo/master/Upload-WindowsAutoPilotInfo.ps1
 #>
 param(
 [string] $url,
