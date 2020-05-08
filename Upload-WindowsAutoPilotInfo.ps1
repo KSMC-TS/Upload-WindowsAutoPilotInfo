@@ -13,7 +13,7 @@ converted to a PS function.
 .PARAMETER webhook
     This should be the URL to POST to upon completion to trigger further action. Ex - trigger Azure Automation job.
 .EXAMPLE
-    .\Upload-WindowsAutoPilotInfo.ps1 -url "https://storage-acct-name.blob.core.windows.net/container-name" -sas "?insert_sas_string_here"
+    Upload-WindowsAutoPilotInfo.ps1 -url "https://storage-acct-name.blob.core.windows.net/container-name" -sas "?insert_sas_string_here" -webhook "https://events.azure-automation.com/webhooks?token=tokenmctokerson"
 .NOTES
     Version:         0.2
     Last Updated:    05/07/2020
