@@ -7,20 +7,24 @@
 converted to a PS function.
 .PARAMETER url
     This should be the url of the container where the hash will be uploaded to - 
-https://storage-acct-name.blob.core.windows.net/container-name.
+	https://storage-acct-name.blob.core.windows.net/container-name.
 .PARAMETER sas
     This should be a SAS token generated for the container.
+.PARAMETER webhook
+    This should be the URL to POST to upon completion to trigger further action. Ex - trigger Azure Automation job.
 .EXAMPLE
-    .\Upload-WindowsAutoPilotInfo.ps1 -url "https://storage-acct-name.blob.core.windows.net/container-name" -sas "?insert_sas_string_here"
+    Upload-WindowsAutoPilotInfo.ps1 -url "https://storage-acct-name.blob.core.windows.net/container-name" -sas "?insert_sas_string_here" -webhook "https://events.azure-automation.com/webhooks?token=tokenmctokerson"
 .NOTES
-    Version:         0.1
-    Author:          Zachary Choate
+    Version:         0.2
+    Last Updated:    05/07/2020
     Creation Date:   02/24/2020
+    Author:          Zachary Choate
     URL:             https://raw.githubusercontent.com/zchoate/Upload-WindowsAutoPilotInfo/master/Upload-WindowsAutoPilotInfo.ps1
 #>
 param(
 [string] $url,
-[string] $sas
+[string] $sas,
+[string] $webhook
 )
 #
 #################################################################################
@@ -177,25 +181,30 @@ End
 }
 }
 
-#AutoPilot Info File:
+# AutoPilot Info File:
 $file = "$env:Temp\$env:COMPUTERNAME.csv"
 
-#Get Hash:
+# Get Hash:
 Get-WindowsAutoPilotInfo -outputfile $file
 
-#Get the file name without path:
+# Get the file name without path:
 $name = (Get-Item $file).Name
 
-#The target URL with SAS Token:
+# The target URL with SAS Token:
 $uri = "$url/$($name)$sas"
 
-#Define required Headers:
+# Define required Headers:
 $headers = @{
     'x-ms-blob-type' = 'BlockBlob'
 }
 
-#Upload File:
-Invoke-RestMethod -Uri $uri -Method Put -Headers $headers -InFile $file 
+# Upload File:
+Invoke-RestMethod -Uri $uri -Method Put -Headers $headers -InFile $file
 
-#Clean up AutoPilot Info File:
+# Clean up AutoPilot Info File:
 Remove-Item $file
+
+# If webhook is specified, invoke webhook.
+If($webhook) {
+	Invoke-RestMethod -Uri $webhook -Method POST
+}
