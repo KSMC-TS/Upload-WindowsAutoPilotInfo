@@ -20,4 +20,4 @@ Upload-WindowsAutoPilotInfo.ps1 -url "https://storage-acct-name.blob.core.window
     Last Updated:    05/07/2020
     Creation Date:   02/24/2020
     Author:          Zachary Choate
-    URL:             https://raw.githubusercontent.com/zchoate/Upload-WindowsAutoPilotInfo/master/Upload-WindowsAutoPilotInfo.ps1
+    URL:             https://raw.githubusercontent.com/zchoate/Upload-WindowsAutoPilotInfo/main/Upload-WindowsAutoPilotInfo.ps1
