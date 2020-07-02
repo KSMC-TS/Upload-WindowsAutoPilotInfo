@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     .
 .DESCRIPTION
@@ -20,7 +20,7 @@ converted to a PS function.
     Creation Date:   02/24/2020
     Author:          Zachary Choate
     Organization:    KSM Consulting
-    URL:             https://raw.githubusercontent.com/KSMC-TS/Upload-WindowsAutoPilotInfo/master/Upload-WindowsAutoPilotInfo.ps1
+    URL:             https://raw.githubusercontent.com/KSMC-TS/Upload-WindowsAutoPilotInfo/main/Upload-WindowsAutoPilotInfo.ps1
 #>
 param(
 [string] $url,
